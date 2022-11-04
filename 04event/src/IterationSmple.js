@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import onClick from "./../../../../ezen-ui-team-project/lib/swiper-8.4.4/core/events/onClick";
-import { filter } from "dom7";
 
-const IterationSmple = () => {
-  // 컴포넌트 배열을 알아서 뿌려줌
-  // 컴포넌트가 배열이면 반드시 키 값이 필요함
-  // 키 값 생성
+const IterationSample = () => {
   const [names, setNames] = useState([
     { id: 1, text: "눈사람" },
     { id: 2, text: "얼음" },
@@ -16,17 +11,9 @@ const IterationSmple = () => {
   const [inputText, setInputText] = useState("");
   const [nextId, setNextId] = useState(5);
 
-  const nameList = names.map((name) => (
-    <li key={name.id} onDoubleClick={() => onRemove(name.id)}>
-      {name.text}
-    </li>
-  ));
-
-  // 입력된 값으로 업데이트를 시켜줌
+  //입력된 값으로 업데이트를 시켜줌
   const onChange = (e) => setInputText(e.target.value);
-
   const onClick = () => {
-    //추가로 두개의 배열을 합쳐주는 메서드
     const nextNames = names.concat({
       id: nextId,
       text: inputText,
@@ -38,12 +25,15 @@ const IterationSmple = () => {
   };
 
   const onRemove = (id) => {
-    const nextNames = names.filter((name) => {
-      return name.id !== id;
-    });
+    const nextNames = names.filter((name) => name.id !== id);
     setNames(nextNames);
   };
 
+  const nameList = names.map((name) => (
+    <li key={name.id} onDoubleClick={() => onRemove(name.id)}>
+      {name.text}
+    </li>
+  ));
   return (
     <>
       <input value={inputText} onChange={onChange} />
@@ -53,4 +43,4 @@ const IterationSmple = () => {
   );
 };
 
-export default IterationSmple;
+export default IterationSample;

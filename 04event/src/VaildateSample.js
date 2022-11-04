@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-// import "./VaildateSample.css";
+import "./ValidateSample.css";
 
-class VaildateSample extends Component {
+class ValidateSample extends Component {
   state = {
     password: "",
-    Cliked: false,
-    Validated: false,
+    clicked: false,
+    validated: false,
   };
 
   handleChange = (e) => {
@@ -14,8 +14,8 @@ class VaildateSample extends Component {
 
   handleButtonClick = () => {
     this.setState({
-      Cliked: true,
-      Validated: this.state.password === "0000",
+      clicked: true,
+      validated: this.state.password === "0000",
     });
     this.input.focus();
   };
@@ -29,11 +29,11 @@ class VaildateSample extends Component {
             this.input = ref;
           }}
           type="password"
-          value={this.state.value}
+          value={this.state.password}
           onChange={this.handleChange}
-          ClassName={
-            this.state.Cliked
-              ? this.state.Validated
+          className={
+            this.state.clicked
+              ? this.state.validated
                 ? "success"
                 : "failure"
               : ""
@@ -45,4 +45,4 @@ class VaildateSample extends Component {
   }
 }
 
-export default VaildateSample;
+export default ValidateSample;
